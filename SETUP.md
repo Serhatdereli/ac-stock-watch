@@ -19,15 +19,15 @@ You are **not** notified again for the same unit until it goes out of stock and 
 | **B&Q** | ✅ Working — publishes collect and delivery availability separately |
 | **Screwfix** | ✅ Working — publishes collect and delivery availability separately |
 | Toolstation | ⚠️ Best effort — builds its results in the browser, so usually returns nothing |
-| Argos | ❌ Needs the browser add-on |
-| Currys | ❌ Needs the browser add-on |
-| John Lewis | ❌ Needs the browser add-on |
+| **John Lewis** | ✅ Working — via the browser add-on on your Mac (Part 3, installed) |
+| Argos | ❌ Blocked — refuses automated browsers entirely |
+| Currys | ❌ Blocked — refuses automated browsers entirely |
 
-**Why three retailers are missing.** B&Q and Screwfix publish their stock as structured data inside the page, which anything can read. Argos, Currys and John Lewis build their search results in the browser using JavaScript, so a plain fetch receives an empty shell with no products in it. Argos goes further and refuses non-browser requests outright — this was tested from a home broadband connection as well as from the cloud, and it blocks both.
+**Why some retailers are harder than others.** B&Q and Screwfix publish their stock as structured data inside the page, which anything can read — so they run in the cloud, free, 24/7. John Lewis builds its results in the browser, so it needs the Mac-side add-on (Part 3), which is installed.
 
-Covering them properly means driving a real Chrome in the background, which is a separate opt-in add-on rather than something worth forcing on every install.
+**Argos and Currys are genuinely blocked.** Both were tested four separate ways — plain requests, TLS-fingerprint impersonation, headless Chrome, and automated visible Chrome — from your home broadband as well as from the cloud. Argos (Akamai) and Currys (Cloudflare) refuse every one. Only a Chrome you drive by hand gets in, which can't be automated without hijacking your everyday browser.
 
-**Worth knowing:** Argos is the only one of the six that filters its results to *BR1 3RU within 25 miles*, so if you do add the browser add-on later, Argos gives genuinely local stock rather than national availability. At the time of setup it listed three portable units — MeacoCool 9000BTU at £400, Pro Breeze 5000BTU at £399.99 and Pro Breeze 12,000BTU at £669.99 — all out of stock.
+That's a real gap, and worth knowing about: Argos is the only retailer of the six that filters its results to *BR1 3RU within 25 miles*, so it would have given genuinely local stock rather than national. At the time of setup it listed MeacoCool 9000BTU at £400, Pro Breeze 5000BTU at £399.99 and Pro Breeze 12,000BTU at £669.99 — all out of stock. Worth checking by hand occasionally.
 
 ---
 
@@ -90,21 +90,19 @@ Done. It now runs itself every 30 minutes, forever, free.
 
 ---
 
-## Part 3 — The browser add-on for Argos, Currys and John Lewis (optional)
+## Part 3 — The browser add-on
 
-Not installed by default. Skip it unless you specifically want those three covered.
+> **✅ Already installed and running.** `browser_check.py` drives Chrome with its window parked off-screen, so nothing appears over your work. It's scheduled by launchd every 30 minutes and covers **John Lewis**. It found all 4 units on its first run.
 
-These retailers only reveal their stock to a real browser. The add-on drives your existing Chrome in the background — headless, so no windows appear — reads the same pages you'd see by hand, and feeds the results into the same alerting.
+**Argos and Currys could not be included.** This wasn't for lack of trying — they were tested four ways each: plain requests, TLS-fingerprint impersonation, headless Chrome, and automated visible Chrome, from your home broadband as well as from the cloud. Argos (Akamai) and Currys (Cloudflare) refuse all four. Only an ordinary Chrome that you drive by hand gets through. Full evidence is in `HANDOFF.md` section 4 and at the top of `browser_check.py`.
 
-**Trade-offs, honestly:**
+**Trade-offs of the Mac half:**
 
-- It only runs while the Mac is awake, so overnight restocks are missed. The cloud job is unaffected.
-- It's more fragile than the cloud job. Retailers change their pages, and bot protection is an arms race — expect to need the occasional fix.
-- Upside: Argos is the only retailer of the six that filters stock to *BR1 3RU within 25 miles*, so it gives real local availability rather than national.
+- Runs only while the Mac is awake, so overnight restocks are missed. The cloud half is unaffected and runs 24/7.
+- More fragile than the cloud half — retailers change their pages, so expect the occasional fix.
+- John Lewis publishes national availability, so check your nearest branch before travelling.
 
-The Mac-side pieces (`run-on-mac.sh`, `com.serhat.acstockwatch.plist`) are already in this folder, ready to be pointed at the add-on once it exists. `run-on-mac.sh` reads your ntfy topic from a `.ntfy-topic` file kept out of the repo, so nothing private is ever published.
-
-To schedule it once the add-on is in place:
+If you ever need to stop or restart it:
 
 ```bash
 cp ~/ac-stock-watch/com.serhat.acstockwatch.plist ~/Library/LaunchAgents/
