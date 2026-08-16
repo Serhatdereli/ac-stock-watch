@@ -1,0 +1,48 @@
+name: Check AC stock
+
+on:
+  schedule:
+    # Every 30 minutes. GitHub runs scheduled jobs on a best-effort basis,
+    # so the real gap is often 30-45 minutes. That is fine for stock checks.
+    - cron: "*/30 * * * *"
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write           # needed so the job can save state.json back
+
+concurrency:
+  group: ac-stock-watch
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check stock and notify
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_SERVER: ${{ secrets.NTFY_SERVER }}
+          NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
+        run: python3 check_stock.py
+
+      - name: Remember what was in stock
+        run: |
+          if [ -n "$(git status --porcelain state.json)" ]; then
+            git config user.name  "ac-stock-watch"
+            git config user.email "actions@users.noreply.github.com"
+            git add state.json
+            git commit -m "Update stock state [skip ci]"
+            git push
+          else
+            echo "No state change to record."
+          fi

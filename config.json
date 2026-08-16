@@ -1,0 +1,87 @@
+{
+  "_comment": "Portable air conditioner stock watcher for Bromley BR1 3RU. Edit anything here; the script reads it fresh on every run.",
+
+  "location": {
+    "postcode": "BR1 3RU",
+    "town": "Bromley"
+  },
+
+  "ntfy": {
+    "_comment": "Leave topic empty here and set NTFY_TOPIC instead, so your private topic never ends up in a public repo.",
+    "server": "https://ntfy.sh",
+    "topic": "",
+    "token": ""
+  },
+
+  "_comment_retailers": "Argos, Currys and John Lewis are deliberately absent: their search pages are built by JavaScript in the browser, so there is nothing for a plain fetch to read, and Argos actively blocks non-browser requests. Adding them needs the browser add-on described in SETUP.md.",
+  "retailers": [
+    "bq",
+    "screwfix",
+    "toolstation"
+  ],
+
+  "search_terms": [
+    "portable air conditioner",
+    "air conditioning unit"
+  ],
+
+  "matching": {
+    "_comment": "Search pages are full of desk fans, air coolers and accessories. These rules keep only real portable AC units.",
+
+    "require_any_keyword": [
+      "air condition",
+      "air-condition",
+      "air con ",
+      "aircon",
+      "monobloc"
+    ],
+
+    "require_btu_rating": true,
+
+    "exclude_keywords": [
+      "cover",
+      "hose",
+      "seal kit",
+      "window kit",
+      "bracket",
+      "deflector",
+      "sleeve",
+      "o-ring",
+      "tool set",
+      "pipe",
+      "controller",
+      "spares",
+      "air cooler",
+      "cooler fan",
+      "leafless",
+      "neck fan",
+      "desk fan",
+      "evaporative",
+      "car clip",
+      "usb",
+      "laptop",
+      "phone cooler",
+      "mattress",
+      "solar panel",
+      "card terminal",
+      "water conditioner",
+      "disconnection",
+      "foot p"
+    ],
+
+    "min_price": 100.0,
+    "max_price": null
+  },
+
+  "settings": {
+    "_comment_alert_on": "collect = only alert when you can pick it up in store. Change to 'any' to also alert on home delivery.",
+    "alert_on": "collect",
+
+    "max_products_per_retailer": 12,
+    "max_alerts_per_run": 5,
+    "polite_delay_seconds": 1.5,
+
+    "_comment_blocked": "Argos, Currys and John Lewis block datacentre traffic. They are skipped automatically in GitHub Actions and run only from your Mac. Set this true if you ever want the cloud run to attempt them anyway.",
+    "try_blocked_retailers_in_cloud": false
+  }
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  launchd job for the Mac side of the AC stock watcher.
+
+  Before installing, replace  /Users/serhatdereli/ac-stock-watch  below with the real
+  folder path (drag the folder into Terminal to reveal it), then follow the
+  install steps in SETUP.md.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.serhat.acstockwatch</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/serhatdereli/ac-stock-watch/run-on-mac.sh</string>
+    </array>
+
+    <!-- Run every 30 minutes while the Mac is awake. -->
+    <key>StartInterval</key>
+    <integer>1800</integer>
+
+    <!-- Catch up on a missed run after the lid is opened. -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/serhatdereli/ac-stock-watch/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/serhatdereli/ac-stock-watch/launchd.err.log</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+</dict>
+</plist>
