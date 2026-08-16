@@ -1,129 +1,130 @@
-# Page monitors — covering the retailers the watcher can't reach
+# Page monitors — Currys coverage via Visualping
 
-The automated watcher covers B&Q, Screwfix and John Lewis. Argos, Currys and AO
-block it outright. This file covers those with a free page-monitoring service
-instead, which works because those services render pages in a real browser.
+**Status: set up and running.** Five monitors are live on the free plan, checking
+daily, alerting to the same ntfy topic as everything else.
 
-**Set-up time: about 10 minutes. Cost: £0.**
-
----
-
-## Which service
-
-**Use [Visualping](https://visualping.io) for these three.** Argos sits behind Akamai,
-Currys behind Cloudflare, and AO blocked us as well — Visualping renders pages in a
-real browser, so it gets through where a plain fetcher won't. Free tier is 5 pages
-checked daily.
-
-[UptimeRobot](https://uptimerobot.com/free-tools/back-in-stock-alert/) is the
-alternative: 50 monitors and 5-minute checks on the free tier (personal use only),
-which is six times faster than our own job. But it fetches raw HTML rather than
-rendering, so **it may be refused by Cloudflare on Currys**. Worth trying, since the
-allowance is so much bigger — just set up **one** monitor first and confirm it reports
-the page correctly before building the rest.
-
-Honest expectation: the same bot protection that blocked us may block them. Test one,
-then scale.
+The automated watcher covers B&Q, Screwfix and John Lewis. This covers Currys.
+Argos could not be covered — see below.
 
 ---
 
-## Send the alerts to your phone, not your inbox
+## Argos: definitively unreachable
 
-Both services can POST to a webhook. Point it at your existing ntfy topic and these
-alerts land in the same place as everything else, rather than in email.
+Argos has now defeated **five** separate approaches:
 
-Get your webhook URL by running this in Terminal, then paste the result into the
-service:
+| Approach | Result |
+|---|---|
+| Plain HTTP request | 403 Access Denied |
+| TLS-fingerprint impersonation (curl_cffi, Chrome + Safari profiles) | 403 — one fluke success, never reproduced |
+| Headless Chrome via Playwright | Access Denied |
+| Automated visible Chrome via Playwright | Access Denied |
+| **Visualping** (third-party, real browser, their infrastructure) | **Access Denied** |
+
+Tested from a home broadband line and from a data centre. Product pages are blocked
+as well as search pages. Only an ordinary Chrome that a human is driving gets in.
+
+This matters more than it sounds: Argos is the **only** retailer of the ten checked
+that filters availability to *BR1 3RU within 25 miles*. Everything else reports
+national stock. So the one source of genuinely local data is the one source that
+can't be automated.
+
+**Practical answer:** check Argos by hand occasionally. The three units, all out of
+stock at the time of writing:
+
+- MeacoCool MC Series Pro 9000BTU — £400.00 — https://www.argos.co.uk/product/7623899
+- Pro Breeze 5000 BTU 3-in-1 — £399.99 — https://www.argos.co.uk/product/yzd6dz6x
+- Pro Breeze 12,000 BTU — £669.99 — https://www.argos.co.uk/product/3ev7rdph
+
+---
+
+## Currys: five monitors live
+
+Visualping loads Currys without trouble and its AI correctly identifies the pages as
+products, offering stock-status conditions directly.
+
+| # | Unit | Job |
+|---|---|---|
+| 1 | LOGIK LAC07C25 Portable AC & Dehumidifier | 9087533 |
+| 2 | MEACO MeacoCool 8000CHR PRO | 9087536 |
+| 3 | DELONGHI Pinguino ES72 8300 BTU | 9087537 |
+| 4 | DELONGHI Pinguino EX100 10000 BTU | 9087540 |
+| 5 | LOGIK LAC12C24 12000 BTU | 9087543 |
+
+Chosen to span 7,000–12,000 BTU and budget through premium, so a restock anywhere in
+the range gets caught.
+
+**Condition:** stock status change / product back in stock — Visualping words this
+differently per page; each monitor uses whichever variant it offered.
+**Frequency:** daily (the free plan's limit).
+**Alerts:** webhook to the ntfy topic, so they arrive as phone notifications.
+
+Dashboard: <https://visualping.io/jobs>
+
+---
+
+## The one thing to watch for
+
+Visualping doesn't send a confirmation when a webhook is saved, so the webhook was
+entered and accepted on all five but has not been proven end-to-end.
+
+**The first real alert proves it.** If it arrives as a phone notification, everything
+is wired correctly. If it arrives as an email instead, the webhook didn't save — open
+the monitor, click **Notifications → Webhook**, and paste this in:
 
 ```bash
 echo "https://ntfy.sh/$(cat ~/ac-stock-watch/.ntfy-topic)"
 ```
 
-Set the webhook method to **POST** and leave the body as the default text. If your
-plan doesn't include webhooks, use email — it still reaches both devices.
-
-*(The topic itself is deliberately not written into this file, because this file
-lives in a public repository. Treat it like a password.)*
+*(The topic isn't written into this file because the repository is public.)*
 
 ---
 
-## What to monitor — in priority order
+## Free plan limits
 
-### 1-3. Argos (highest value — the only genuinely local stock data)
+150 checks a month, refilling 16 September 2026. Five monitors checked daily uses
+almost exactly that — so the allowance is fully committed. Adding a sixth monitor
+means removing one, or the checks will run out before month end.
 
-Argos is the only retailer of the nine that filters availability to **BR1 3RU within
-25 miles**. Everything else reports national stock. These three were all out of stock
-at setup.
+To swap a unit: open the monitor from the dashboard, delete it, then **New monitor**
+and follow the same steps — paste URL, **Go**, pick the stock-status condition,
+**Notifications → Webhook**, **Start monitoring**.
 
-| Unit | Price | URL |
-|---|---|---|
-| MeacoCool MC Series Pro 9000BTU | £400.00 | https://www.argos.co.uk/product/7623899 |
-| Pro Breeze 5000 BTU 3-in-1 | £399.99 | https://www.argos.co.uk/product/yzd6dz6x |
-| Pro Breeze 12,000 BTU | £669.99 | https://www.argos.co.uk/product/3ev7rdph |
-
-**Keyword to watch:** `Out of stock`
-**Alert when:** the keyword **disappears** (that's the restock)
-
-### 4-5. Currys — pick two
-
-Currys carries the widest portable range of any retailer checked. Two suggestions
-below; the full list follows if you'd rather choose your own.
-
-| Unit | URL |
-|---|---|
-| LOGIK LAC07C25 Portable AC & Dehumidifier | https://www.currys.co.uk/products/logik-lac07c25-portable-air-conditioner-and-dehumidifier-white-10270705.html |
-| DELONGHI Pinguino ES72 8300 BTU | https://www.currys.co.uk/products/delonghi-pinguino-es72-8300-btu-air-conditioner-and-dehumidifier-white-10259980.html |
-
-**Keyword to watch:** `Out of stock`
-**Alert when:** the keyword **disappears**
+The full Currys range, if you want to swap in a different size:
 
 <details>
-<summary>Full Currys portable range (13 units) — click to expand</summary>
+<summary>All 13 Currys portable units — click to expand</summary>
 
-All verified present on 16 Aug 2026. Split-system and installation packages excluded.
+Verified present 16 Aug 2026. Prefix each with `https://www.currys.co.uk/products/`.
 
-- MEACO MeacoCool MC12000CHR PRO — `/products/meaco-meacocool-mc12000chr-pro-smart-air-conditioner-heater-and-dehumidifier-white-10260647.html`
-- MEACO MeacoCool 8000CHR PRO — `/products/meaco-meacocool-8000chr-pro-smart-air-conditioner-and-dehumidifier-white-10260645.html`
-- LOGIK LAC07C25 — `/products/logik-lac07c25-portable-air-conditioner-and-dehumidifier-white-10270705.html`
-- LOGIK LAC09C26 — `/products/logik-lac09c26-portable-air-conditioner-and-dehumidifier-white-10294164.html`
-- LOGIK LAC12C24 — `/products/logik-lac12c24-portable-air-conditioner-and-dehumidifier-white-10257344.html`
-- LOGIK LAC12CH26 — `/products/logik-lac12ch26-portable-air-conditioner-heater-and-dehumidifier-white-10294167.html`
-- DELONGHI Pinguino ES72 8300 BTU — `/products/delonghi-pinguino-es72-8300-btu-air-conditioner-and-dehumidifier-white-10259980.html`
-- DELONGHI Pinguino EM90 ECO 9800 BTU — `/products/delonghi-pinguino-em90-eco-9800-btu-air-conditioner-and-dehumidifier-white-10226847.html`
-- DELONGHI Pinguino EX100 10000 BTU — `/products/delonghi-pinguino-ex100-10000-btu-portable-air-conditioner-and-dehumidifier-white-10300973.html`
-- DELONGHI Pinguino EX93 Extreme 9400 BTU — `/products/delonghi-pinguino-ex93-extreme-9400-btu-portable-air-conditioner-fan-and-dehumidifier-white-10300951.html`
-- DELONGHI Pinguino AP98 GentleJet 11500 BTU — `/products/delonghi-pinguino-ap98-gentlejet-11500-btu-portable-air-conditioner-fan-and-dehumidifier-white-10300393.html`
-- DELONGHI Pinguino AP130i GentleJet 13000 BTU — `/products/delonghi-pinguino-ap130i-gentlejet-13000-btu-portable-air-conditioner-fan-and-dehumidifier-white-10300416.html`
-- DIMPLEX Eco Air — `/products/dimplex-eco-air-portable-air-conditioner-and-dehumidifier-10301228.html`
-
-Prefix each with `https://www.currys.co.uk`.
+- `meaco-meacocool-mc12000chr-pro-smart-air-conditioner-heater-and-dehumidifier-white-10260647.html`
+- `meaco-meacocool-8000chr-pro-smart-air-conditioner-and-dehumidifier-white-10260645.html` ⭐ monitored
+- `logik-lac07c25-portable-air-conditioner-and-dehumidifier-white-10270705.html` ⭐ monitored
+- `logik-lac09c26-portable-air-conditioner-and-dehumidifier-white-10294164.html`
+- `logik-lac12c24-portable-air-conditioner-and-dehumidifier-white-10257344.html` ⭐ monitored
+- `logik-lac12ch26-portable-air-conditioner-heater-and-dehumidifier-white-10294167.html`
+- `delonghi-pinguino-es72-8300-btu-air-conditioner-and-dehumidifier-white-10259980.html` ⭐ monitored
+- `delonghi-pinguino-em90-eco-9800-btu-air-conditioner-and-dehumidifier-white-10226847.html`
+- `delonghi-pinguino-ex100-10000-btu-portable-air-conditioner-and-dehumidifier-white-10300973.html` ⭐ monitored
+- `delonghi-pinguino-ex93-extreme-9400-btu-portable-air-conditioner-fan-and-dehumidifier-white-10300951.html`
+- `delonghi-pinguino-ap98-gentlejet-11500-btu-portable-air-conditioner-fan-and-dehumidifier-white-10300393.html`
+- `delonghi-pinguino-ap130i-gentlejet-13000-btu-portable-air-conditioner-fan-and-dehumidifier-white-10300416.html`
+- `dimplex-eco-air-portable-air-conditioner-and-dehumidifier-10301228.html`
 
 </details>
 
 ---
 
-## Steps
+## Where everything now stands
 
-1. Go to [visualping.io](https://visualping.io) and create a free account.
-2. Paste the first Argos URL. Choose **text change** monitoring.
-3. Select the area of the page showing stock status, or set the keyword to
-   `Out of stock` and alert when it disappears.
-4. Set the check frequency to daily (the free tier's limit).
-5. Add the webhook URL from the section above, or use email.
-6. **Confirm this one works before adding the rest** — if Argos blocks Visualping too,
-   there's no point building four more.
-7. Repeat for the remaining four.
+| Retailer | Covered by | Runs |
+|---|---|---|
+| B&Q | `check_stock.py` | GitHub Actions, every 30 min, 24/7 |
+| Screwfix | `check_stock.py` | GitHub Actions, every 30 min, 24/7 |
+| Toolstation | `check_stock.py` | GitHub Actions — best effort, usually returns nothing |
+| John Lewis | `browser_check.py` | Mac launchd, every 30 min while awake |
+| **Currys** | **Visualping** | **Daily, 5 units** |
+| Argos | nothing — blocks everything | check by hand |
+| AO.com | nothing — blocked | — |
 
----
-
-## What this does and doesn't give you
-
-**Does:** covers the three retailers the watcher can't reach, including the only
-BR1-local stock data available anywhere.
-
-**Doesn't:** discover new products. A page monitor only ever watches the exact URLs
-you give it. If Argos stocks a new model next week, you won't hear about it — the
-watcher would have caught that on B&Q or Screwfix, but nobody will catch it on Argos.
-
-That's the honest trade. Between the two approaches you get broad discovery on three
-retailers and pinpoint coverage on five specific units elsewhere.
+All four channels alert to the same ntfy topic, so everything arrives in one place on
+your phone and laptop.
