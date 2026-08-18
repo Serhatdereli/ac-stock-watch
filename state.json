@@ -8,13 +8,6 @@
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/4-in-1-portable-air-conditioner-7000-btu-with-heater-remote/0718468255305_BQ.prd"
     },
-    "bq:5054630723841": {
-      "in_stock": false,
-      "name": "Baridi 4-in-1 Smart Monobloc Wall-Mounting Air Conditioning Unit 12,000Btu/hr with 24hr Timer, Remote Control & Wi-Fi, White,  DH",
-      "price": 1499.98,
-      "retailer": "B&Q",
-      "url": "https://www.diy.com/departments/baridi-4-in-1-smart-monobloc-wall-mounting-air-conditioning-unit-12-000btu-hr-with-24hr-timer-remote-control-wi-fi-white-dh/5054630723841_BQ.prd"
-    },
     "screwfix:730XG": {
       "in_stock": true,
       "name": "Blyss A018I-09C Local Air Conditioner 9000BTU",
@@ -38,5 +31,5 @@
     }
   },
   "last_commit_day": "2026-08-18",
-  "last_run": "2026-08-18T00:36:01+00:00"
+  "last_run": "2026-08-18T08:38:17+00:00"
 }
