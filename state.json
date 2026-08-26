@@ -8,13 +8,6 @@
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/olsen-smith-single-portable-air-conditioner-12000-btu-3-in-1-ac-unit-50m-remote-timer-dehumidifier-white/5038230170984_BQ.prd"
     },
-    "bq:5060974530434": {
-      "in_stock": false,
-      "name": "Aircondition LUX AIR KYR-25CO/LUX 9000BTU Portable Air Conditioning Unit - KYR-25CO/LUX - Cool Only for Up to 30m2 Rooms",
-      "price": 599.99,
-      "retailer": "B&Q",
-      "url": "https://www.diy.com/departments/aircondition-lux-air-kyr-25co-lux-9000btu-portable-air-conditioning-unit-kyr-25co-lux-cool-only-for-up-to-30m2-rooms/5060974530434_BQ.prd"
-    },
     "bq:8713415382518": {
       "in_stock": false,
       "name": "Prem-I-Air 2400 BTU Caravan Split Air Conditioner White",
@@ -45,5 +38,5 @@
     }
   },
   "last_commit_day": "2026-08-26",
-  "last_run": "2026-08-26T20:20:35+00:00"
+  "last_run": "2026-08-26T23:50:13+00:00"
 }
