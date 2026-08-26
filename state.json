@@ -1,6 +1,13 @@
 {
   "initialised": true,
   "items": {
+    "bq:5038230170984": {
+      "in_stock": false,
+      "name": "Olsen & Smith Single Portable Air Conditioner, 12000 BTU, 3 In 1 AC Unit, 50m\u00b2, Remote, Timer, Dehumidifier, White",
+      "price": 1299.99,
+      "retailer": "B&Q",
+      "url": "https://www.diy.com/departments/olsen-smith-single-portable-air-conditioner-12000-btu-3-in-1-ac-unit-50m-remote-timer-dehumidifier-white/5038230170984_BQ.prd"
+    },
     "bq:5060974530434": {
       "in_stock": false,
       "name": "Aircondition LUX AIR KYR-25CO/LUX 9000BTU Portable Air Conditioning Unit - KYR-25CO/LUX - Cool Only for Up to 30m2 Rooms",
@@ -38,5 +45,5 @@
     }
   },
   "last_commit_day": "2026-08-26",
-  "last_run": "2026-08-26T00:37:48+00:00"
+  "last_run": "2026-08-26T20:20:35+00:00"
 }
