@@ -11,7 +11,7 @@
     "bq:5038230170984": {
       "in_stock": false,
       "name": "Olsen & Smith Single Portable Air Conditioner, 12000 BTU, 3 In 1 AC Unit, 50m\u00b2, Remote, Timer, Dehumidifier, White",
-      "price": 1079.99,
+      "price": 1179.99,
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/olsen-smith-single-portable-air-conditioner-12000-btu-3-in-1-ac-unit-50m-remote-timer-dehumidifier-white/5038230170984_BQ.prd"
     },
@@ -45,5 +45,5 @@
     }
   },
   "last_commit_day": "2026-08-28",
-  "last_run": "2026-08-28T01:33:34+00:00"
+  "last_run": "2026-08-28T15:59:59+00:00"
 }
