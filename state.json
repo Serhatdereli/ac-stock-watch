@@ -4,7 +4,7 @@
     "bq:0718468254780": {
       "in_stock": false,
       "name": "9000 BTU 4-in-1 Portable Air Conditioner With Heater & Remote",
-      "price": 839.99,
+      "price": 749.99,
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/9000-btu-4-in-1-portable-air-conditioner-with-heater-remote/0718468254780_BQ.prd"
     },
@@ -45,5 +45,5 @@
     }
   },
   "last_commit_day": "2026-09-02",
-  "last_run": "2026-09-02T00:08:31+00:00"
+  "last_run": "2026-09-02T12:04:58+00:00"
 }
