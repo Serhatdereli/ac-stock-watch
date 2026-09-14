@@ -57,6 +57,13 @@
       "retailer": "Screwfix",
       "url": "https://www.screwfix.com/p/blyss-a018i-12ch-reversible-air-conditioner-12-000btu/835xg"
     },
+    "screwfix:891EW": {
+      "in_stock": false,
+      "name": "Ecoflow Wave 3  Aircon Heater Unit 3100/6800BTU",
+      "price": 799.0,
+      "retailer": "Screwfix",
+      "url": "https://www.screwfix.com/p/ecoflow-wave-3-aircon-heater-unit-3100-6800btu/891ew"
+    },
     "screwfix:931AX": {
       "in_stock": true,
       "name": "Air Conditioning Unit 5000BTU",
@@ -66,5 +73,5 @@
     }
   },
   "last_commit_day": "2026-09-14",
-  "last_run": "2026-09-14T00:09:10+00:00"
+  "last_run": "2026-09-14T06:59:18+00:00"
 }
