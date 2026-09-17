@@ -22,6 +22,13 @@
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/olsen-smith-single-portable-air-conditioner-12000-btu-3-in-1-ac-unit-50m-remote-timer-dehumidifier-white/5038230170984_BQ.prd"
     },
+    "bq:5051462013201": {
+      "in_stock": false,
+      "name": "EcoAir Apollo12 12,000 BTU Portable Air Conditioner",
+      "price": 499.0,
+      "retailer": "B&Q",
+      "url": "https://www.diy.com/departments/ecoair-apollo12-12-000-btu-portable-air-conditioner/5051462013201_BQ.prd"
+    },
     "bq:5051462013218": {
       "in_stock": false,
       "name": "EcoAir Apollo10 10,000 BTU Portable Air Conditioner",
@@ -73,5 +80,5 @@
     }
   },
   "last_commit_day": "2026-09-17",
-  "last_run": "2026-09-17T00:07:38+00:00"
+  "last_run": "2026-09-17T13:34:42+00:00"
 }
