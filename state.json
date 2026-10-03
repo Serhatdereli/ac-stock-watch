@@ -15,6 +15,13 @@
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/ecoair-apollo10-10-000-btu-portable-air-conditioner/5051462013218_BQ.prd"
     },
+    "bq:5060215200409": {
+      "in_stock": false,
+      "name": "BLU12 12000 BTU 4-in-1 Portable Air Conditioner A Rated Cooling, A+ Heating, Dehumidifier, Fan, 3 Speeds & Remote Control",
+      "price": 549.99,
+      "retailer": "B&Q",
+      "url": "https://www.diy.com/departments/blu12-12000-btu-4-in-1-portable-air-conditioner-a-rated-cooling-a-heating-dehumidifier-fan-3-speeds-remote-control/5060215200409_BQ.prd"
+    },
     "bq:5060215200638": {
       "in_stock": false,
       "name": "BLU09 9000 BTU A Rated White Portable Air Conditioner with 3 Fan Speeds and Remote Control",
@@ -65,6 +72,6 @@
       "url": "https://www.screwfix.com/p/air-conditioning-unit-5000btu/931ax"
     }
   },
-  "last_commit_day": "2026-10-02",
-  "last_run": "2026-10-02T04:24:05+00:00"
+  "last_commit_day": "2026-10-03",
+  "last_run": "2026-10-03T00:03:42+00:00"
 }
