@@ -1,13 +1,6 @@
 {
   "initialised": true,
   "items": {
-    "bq:0609137986968": {
-      "in_stock": false,
-      "name": "Woods Cortina 12K Smart Home Portable Air Conditioner 12000 BTU Wi-Fi White",
-      "price": 799.99,
-      "retailer": "B&Q",
-      "url": "https://www.diy.com/departments/woods-cortina-12k-smart-home-portable-air-conditioner-12000-btu-wi-fi-white/0609137986968_BQ.prd"
-    },
     "bq:5021196779544": {
       "in_stock": false,
       "name": "Prem-I-Air High Performance Twin Duct 9000 BTU Per Hour Wall Mounted Air Conditioner with Heat Pump White/Silver",
@@ -94,5 +87,5 @@
     }
   },
   "last_commit_day": "2026-10-12",
-  "last_run": "2026-10-12T02:31:54+00:00"
+  "last_run": "2026-10-12T19:33:39+00:00"
 }
