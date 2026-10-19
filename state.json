@@ -46,7 +46,7 @@
     "bq:5054630698187": {
       "in_stock": false,
       "name": "Baridi 5-in-1 Portable Air Conditioner 7,000Btu/hr with TUYA App, Wi-Fi Control, 24hr Timer, Remote Control & Window Sealing Kit -",
-      "price": 325.97,
+      "price": null,
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/baridi-5-in-1-portable-air-conditioner-7-000btu-hr-with-tuya-app-wi-fi-control-24hr-timer-remote-control-window-sealing-kit-/5054630698187_BQ.prd"
     },
@@ -80,5 +80,5 @@
     }
   },
   "last_commit_day": "2026-10-19",
-  "last_run": "2026-10-19T17:05:27+00:00"
+  "last_run": "2026-10-19T21:37:32+00:00"
 }
