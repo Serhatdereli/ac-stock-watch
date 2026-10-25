@@ -36,6 +36,20 @@
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/ecoair-apollo10-10-000-btu-portable-air-conditioner/5051462013218_BQ.prd"
     },
+    "bq:5057994253788": {
+      "in_stock": false,
+      "name": "Air Pro 12000 BTU Portable Air Conditioner with Heating, WiFi & Remote",
+      "price": 599.99,
+      "retailer": "B&Q",
+      "url": "https://www.diy.com/departments/air-pro-12000-btu-portable-air-conditioner-with-heating-wifi-remote/5057994253788_BQ.prd"
+    },
+    "bq:5057994253795": {
+      "in_stock": false,
+      "name": "Air Pro 9000 BTU Portable Air Conditioner with Heating, WiFi & Remote",
+      "price": 399.99,
+      "retailer": "B&Q",
+      "url": "https://www.diy.com/departments/air-pro-9000-btu-portable-air-conditioner-with-heating-wifi-remote/5057994253795_BQ.prd"
+    },
     "bq:5060215200409": {
       "in_stock": false,
       "name": "BLU12 12000 BTU 4-in-1 Portable Air Conditioner A Rated Cooling, A+ Heating, Dehumidifier, Fan, 3 Speeds & Remote Control",
@@ -73,5 +87,5 @@
     }
   },
   "last_commit_day": "2026-10-25",
-  "last_run": "2026-10-25T01:24:09+00:00"
+  "last_run": "2026-10-25T11:51:45+00:00"
 }
