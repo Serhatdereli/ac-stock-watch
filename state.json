@@ -43,6 +43,13 @@
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/ecoair-apollo10-10-000-btu-portable-air-conditioner/5051462013218_BQ.prd"
     },
+    "bq:5057994253788": {
+      "in_stock": false,
+      "name": "Air Pro 12000 BTU Portable Air Conditioner with Heating, WiFi & Remote",
+      "price": null,
+      "retailer": "B&Q",
+      "url": "https://www.diy.com/departments/air-pro-12000-btu-portable-air-conditioner-with-heating-wifi-remote/5057994253788_BQ.prd"
+    },
     "bq:5057994253795": {
       "in_stock": false,
       "name": "Air Pro 9000 BTU Portable Air Conditioner with Heating, WiFi & Remote",
@@ -71,13 +78,6 @@
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/belaco-portable-air-conditioner-9000btu-4-in-1/5060598911923_BQ.prd"
     },
-    "bq:5063022816634": {
-      "in_stock": true,
-      "name": "GoodHome Local air conditioner Local air conditioner 220-240V 5000BTU - Refurbished",
-      "price": 152.0,
-      "retailer": "B&Q",
-      "url": "https://www.diy.com/departments/goodhome-local-air-conditioner-local-air-conditioner-220-240v-5000btu-refurbished/5063022816634_BQ.prd"
-    },
     "bq:8713415382518": {
       "in_stock": false,
       "name": "Prem-I-Air 2400 BTU Caravan Split Air Conditioner White",
@@ -87,5 +87,5 @@
     }
   },
   "last_commit_day": "2026-10-27",
-  "last_run": "2026-10-27T19:44:52+00:00"
+  "last_run": "2026-10-27T23:19:35+00:00"
 }
