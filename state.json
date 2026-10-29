@@ -4,7 +4,7 @@
     "bq:5016368080542": {
       "in_stock": false,
       "name": "Igenix IG9922 12000BTU 4-in-1 Portable Air Conditioner, White",
-      "price": 409.99,
+      "price": null,
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/igenix-ig9922-12000btu-4-in-1-portable-air-conditioner-white/5016368080542_BQ.prd"
     },
@@ -73,5 +73,5 @@
     }
   },
   "last_commit_day": "2026-10-29",
-  "last_run": "2026-10-29T00:31:20+00:00"
+  "last_run": "2026-10-29T23:26:56+00:00"
 }
