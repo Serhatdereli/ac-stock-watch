@@ -11,7 +11,7 @@
     "bq:5038230170977": {
       "in_stock": false,
       "name": "Olsen & Smith Portable Air Conditioner, Single, 3 In 1 AC Cooler With Fan And Dehumidifier, 9000 BTU, White, Remote",
-      "price": 349.99,
+      "price": 379.99,
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/olsen-smith-portable-air-conditioner-single-3-in-1-ac-cooler-with-fan-and-dehumidifier-9000-btu-white-remote/5038230170977_BQ.prd"
     },
@@ -81,11 +81,11 @@
     "bq:8713415382518": {
       "in_stock": false,
       "name": "Prem-I-Air 2400 BTU Caravan Split Air Conditioner White",
-      "price": 699.0,
+      "price": 662.99,
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/prem-i-air-2400-btu-caravan-split-air-conditioner-white/8713415382518_BQ.prd"
     }
   },
   "last_commit_day": "2026-11-05",
-  "last_run": "2026-11-05T01:21:21+00:00"
+  "last_run": "2026-11-05T16:36:31+00:00"
 }
