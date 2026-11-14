@@ -71,21 +71,21 @@
       "retailer": "B&Q",
       "url": "https://www.diy.com/departments/blu09-9000-btu-a-rated-white-portable-air-conditioner-with-3-fan-speeds-and-remote-control/5060215200638_BQ.prd"
     },
-    "bq:5060598911923": {
+    "bq:7984723681162": {
       "in_stock": false,
-      "name": "Belaco Portable Air Conditioner 9000BTu 4 in 1",
-      "price": 799.99,
+      "name": "Costway 12000 BTU Mini Split Air Conditioner and Heater Inverter Split AC Cools",
+      "price": 609.95,
       "retailer": "B&Q",
-      "url": "https://www.diy.com/departments/belaco-portable-air-conditioner-9000btu-4-in-1/5060598911923_BQ.prd"
+      "url": "https://www.diy.com/departments/costway-12000-btu-mini-split-air-conditioner-and-heater-inverter-split-ac-cools/7984723681162_BQ.prd"
     },
-    "bq:8713415382518": {
+    "bq:7984723681308": {
       "in_stock": false,
-      "name": "Prem-I-Air 2400 BTU Caravan Split Air Conditioner White",
-      "price": 699.0,
+      "name": "Costway 9000 BTU Mini Split Air Conditioner and Heater Inverter Split AC Cools",
+      "price": 574.95,
       "retailer": "B&Q",
-      "url": "https://www.diy.com/departments/prem-i-air-2400-btu-caravan-split-air-conditioner-white/8713415382518_BQ.prd"
+      "url": "https://www.diy.com/departments/costway-9000-btu-mini-split-air-conditioner-and-heater-inverter-split-ac-cools/7984723681308_BQ.prd"
     }
   },
   "last_commit_day": "2026-11-14",
-  "last_run": "2026-11-14T02:32:26+00:00"
+  "last_run": "2026-11-14T09:37:19+00:00"
 }
